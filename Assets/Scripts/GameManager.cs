@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 
-	public int NumberOfPlayers = 2;
+	public int NumberOfPlayers = 1;
 	public int CurrentPlayer = 0;
 	public int MaxNumberOfPlayers = 4;
 
