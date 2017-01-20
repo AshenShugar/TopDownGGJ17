@@ -7,6 +7,7 @@ public class EchoParticle : MonoBehaviour {
 
 	private Vector3 _MovementDirection;
 
+	public float ParticleSpeed;
 
 	public Vector3 MovementDirection {
 		get {
@@ -16,18 +17,18 @@ public class EchoParticle : MonoBehaviour {
 			_MovementDirection = value;
 		}
 	}
-
-	public EchoParticle( Vector3 initialDirection)
-	{
-		MovementDirection = initialDirection;
-	}
-
-	void OnCollisionEnter(Collision aCollision)
+		
+	void OnCollisionEnter2D(Collision2D aCollision)
 	{
 		VisibilityScript vScript = aCollision.gameObject.GetComponent<VisibilityScript> ();
 
-		vScript.ChangeAlpha (0.5f);
-
+		if (vScript != null)
+			vScript.ChangeAlpha (0.5f);
+		else {
+			Debug.Log ("Didn't find a Visibility Script on something we ran into");
+			Debug.Log (aCollision.gameObject.name);
+		}
+		Destroy (this.gameObject);
 	}
 
 	// Use this for initialization
@@ -37,6 +38,6 @@ public class EchoParticle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = transform.position + (MovementDirection * Time.deltaTime);
+		transform.position = transform.position + (MovementDirection.normalized * ParticleSpeed * Time.deltaTime);
 	}
 }

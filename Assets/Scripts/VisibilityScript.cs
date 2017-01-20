@@ -6,8 +6,8 @@ public class VisibilityScript : MonoBehaviour {
 
 	private float _timer;
 
-	public float DarkenTimer = 0.5f;
-	public float DarkenAmount = 0.1f;
+	public float DarkenTimer = 0.25f;
+	public float DarkenAmount = -0.1f;
 
 
 	public void ChangeAlpha(float deltaAlpha)
