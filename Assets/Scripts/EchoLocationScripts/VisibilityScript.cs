@@ -6,8 +6,8 @@ public class VisibilityScript : MonoBehaviour {
 
 	private float _timer;
 
-	public float DarkenTimer = 0.25f;
-	public float DarkenAmount = -0.1f;
+	public float DarkenTimer = 0.05f;
+	public float DarkenAmount = -0.05f;
 
 
 	public void ChangeAlpha(float deltaAlpha)
@@ -36,8 +36,10 @@ public class VisibilityScript : MonoBehaviour {
 	void Update () {
 		_timer += Time.deltaTime;
 
-		if (_timer >= DarkenTimer)
+		if (_timer >= DarkenTimer) {
 			ChangeAlpha (DarkenAmount);
+			_timer = 0;
+		}
 
 	}
 }

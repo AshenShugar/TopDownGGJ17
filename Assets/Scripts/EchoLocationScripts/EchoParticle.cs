@@ -6,6 +6,8 @@ public class EchoParticle : MonoBehaviour {
 
 	public float ttl = 2.0f;
 
+	public float alphaChange = 0.5f;
+
 	private Vector3 _MovementDirection;
 
 	public float ParticleSpeed;
@@ -24,7 +26,7 @@ public class EchoParticle : MonoBehaviour {
 		VisibilityScript vScript = aCollision.gameObject.GetComponent<VisibilityScript> ();
 
 		if (vScript != null)
-			vScript.ChangeAlpha (0.5f);
+			vScript.ChangeAlpha (alphaChange);
 		else {
 			Debug.Log ("Didn't find a Visibility Script on something we ran into");
 			Debug.Log (aCollision.gameObject.name);
