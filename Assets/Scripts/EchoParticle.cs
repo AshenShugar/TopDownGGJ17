@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EchoParticle : MonoBehaviour {
 
+	public float ttl = 2.0f;
 
 	private Vector3 _MovementDirection;
 
@@ -33,7 +34,7 @@ public class EchoParticle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Destroy (this.gameObject, ttl);
 	}
 	
 	// Update is called once per frame

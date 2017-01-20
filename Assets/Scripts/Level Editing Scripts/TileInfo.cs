@@ -5,7 +5,6 @@ using UnityEditor;
 
 public class TileInfo : MonoBehaviour {
 
-	[SerializeField]
 	private PrefabTileList PTL;
 
 	private PrefabTileList GetPTL {
