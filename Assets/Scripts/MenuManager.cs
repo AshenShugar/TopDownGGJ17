@@ -9,13 +9,7 @@ public class MenuManager : MonoBehaviour {
 	private GameManager GM;
 
 	[SerializeField]
-	private Text NumberOfPlayersUI;
-	[SerializeField]
 	private GameObject optionPanel;
-
-	[SerializeField]
-	private string GameScene;
-
 
 	public void ChangeNumberOfPlayers( int deltaNOP)
 	{
@@ -27,8 +21,6 @@ public class MenuManager : MonoBehaviour {
 		if (GM.NumberOfPlayers == 1	)
 			GM.NumberOfPlayers = GM.MaxNumberOfPlayers;
 
-		// update UI
-		NumberOfPlayersUI.text = GM.NumberOfPlayers.ToString();
 	}
 
 	public void ToggleOptionPanel()
@@ -49,13 +41,7 @@ public class MenuManager : MonoBehaviour {
 				Debug.LogWarning ("Couldn't create gameManager script, we're buggered");
 			}
 		}
-
-		//NumberOfPlayersUI.text = GM.NumberOfPlayers.ToString ();
-	}
-
-	public void StartGame(){
-		SceneManager.LoadScene (GameScene);
-	}
+				}
 
 	public void StartGame(string SceneName)
 	{
