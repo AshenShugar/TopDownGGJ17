@@ -7,6 +7,8 @@ public class Pause : MonoBehaviour {
 	private bool isPaused;								//Boolean to check if the game is paused or not
 	[SerializeField]
 	private GameObject optionPanel;
+	[SerializeField]
+	private GameObject MainMenuPanel;
 
 	[SerializeField]
 	private string MenuSceneName;
@@ -40,6 +42,7 @@ public class Pause : MonoBehaviour {
 	{
 		UnPause ();
 		SceneManager.LoadScene (MenuSceneName);
+		MainMenuPanel.SetActive (true);
 	}
 
 	public void DoPause()
