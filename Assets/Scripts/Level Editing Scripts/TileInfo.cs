@@ -7,24 +7,19 @@ public class TileInfo : MonoBehaviour {
 
 	private PrefabTileList PTL;
 
+	public int ThisTilesIndex = -1;
+
 	private PrefabTileList GetPTL {
 		get {
 			if (PTL == null) {
-				Debug.Log ("Couldn't find it");
 				PTL = FindObjectOfType<PrefabTileList> ();
-			} else {
-				Debug.Log ("Found it");
+				if (PTL == null) {
+					Debug.Log ("Unable to find PrefabTileList script on an object.  Level editing won't work properly");
+				}
 			}
 			return PTL;
 		}
 	}
-
-
-	public void Update()
-	{
-
-	}
-
 
 	public int TileCount()
 	{
