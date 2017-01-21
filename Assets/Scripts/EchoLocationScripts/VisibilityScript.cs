@@ -39,6 +39,7 @@ public class VisibilityScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		#if !UNITY_EDITOR
 		// Initially, the level should be invisible, and it's only once you've echo-located stuff that it should appear
 		SpriteRenderer SR = this.gameObject.GetComponent<SpriteRenderer> ();
 		Color tmpColor = SR.color;
@@ -46,6 +47,7 @@ public class VisibilityScript : MonoBehaviour {
 		tmpColor.a = 0;
 
 		SR.color = tmpColor;
+		#endif
 	}
 	
 	// Update is called once per frame
