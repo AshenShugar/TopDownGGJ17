@@ -8,7 +8,7 @@ using UnityEngine;
 public class Rocket: MonoBehaviour
 {
     public double angle;
-    public float speed = 5;
+    public float speed = 10;
     public float waveSize = 1;
     public GameObject creator;
     public Vector3 offset = new Vector3(0, 0, 0);
@@ -16,8 +16,14 @@ public class Rocket: MonoBehaviour
 
     public void Awake()
     {
-        speed = speed / (1 + waveSize*2);
+        AdjustSpeed();
 
+    }
+
+    public void AdjustSpeed()
+    {
+        speed = speed / (1 + waveSize/2);
+        Debug.Log("speed " + speed);
     }
 
     public void Update()
