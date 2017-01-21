@@ -5,6 +5,17 @@ using System;
 public class Enemy1 : MonoBehaviour {
     GameObject target;
 
+
+	[SerializeField]
+	private bool EnemyAwake = false;
+	[SerializeField]
+	private float wakeUpRange = 7.0f;
+
+	public void wakeUp ()
+	{
+		EnemyAwake = true;
+	}
+
 	// Use this for initialization
 	void Start () {
 		target = GameObject.Find("player");
@@ -20,7 +31,12 @@ public class Enemy1 : MonoBehaviour {
         float xo = target.transform.position.x;
         float yo = target.transform.position.y;
 		*/
-        if (target != null)
+
+		if ((target.transform.position - transform.position).magnitude <= wakeUpRange) {
+			EnemyAwake = true;
+		}
+
+        if (target != null && EnemyAwake)
         {
 				
             /*

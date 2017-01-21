@@ -34,6 +34,14 @@ public class EchoParticle : MonoBehaviour {
 			Debug.Log (aCollision.gameObject.name);
 		}
 
+		Enemy1 tmp = aCollision.gameObject.GetComponent<Enemy1> ();
+		if ( tmp != null)
+		{
+
+			tmp.wakeUp ();
+
+		}
+
         Destroy (this.gameObject);
 
 	}
