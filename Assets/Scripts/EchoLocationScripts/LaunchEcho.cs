@@ -64,8 +64,9 @@ public class LaunchEcho : MonoBehaviour {
             if (Input.GetAxis("Fire1") > 0)
             {
                 LaunchEchoLocation();
+                delayBeforeFire = maxDelayBeforeFire;
             }
-            delayBeforeFire = maxDelayBeforeFire;
+
         }
 
 	}
