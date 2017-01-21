@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 
 public class PlayerController : MonoBehaviour {
 
@@ -25,15 +25,52 @@ public class PlayerController : MonoBehaviour {
     {
         healthBar.GetComponent<ShowHealth>().objectTracking = this.gameObject;
         GameObject.Instantiate(healthBar);
-
-
     }
 
-    // Update is called once per frame
-    
+    Dictionary<GameObject, int> damageDelays = new Dictionary<GameObject, int>();
+    public int DamageDelay(GameObject o)
+    {
+       if(o == null || !damageDelays.ContainsKey(o))
+        {
+            return 0;
+        }
+        return damageDelays[o];
+    }
 
-	// Update is called once per frame
-	void FixedUpdate () {
+    private void Update()
+    {
+        List<GameObject> keys = new List<GameObject>(damageDelays.Keys);
+
+        foreach(GameObject key in keys)
+        {
+            if(damageDelays[key]>0)
+            damageDelays[key] = damageDelays[key]-1;
+            else
+            {
+                damageDelays.Remove(key);
+            }
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+
+        // If the colliding gameobject is an Enemy...
+        GameObject other= col.gameObject;
+        if (other.tag == "Enemy" && !damageDelays.ContainsKey(other))
+        {
+            Debug.Log("health " + health);
+            damageDelays[other] = UGameLogic.lengthOfSecond / 2;
+            health -= 5;
+        }
+    }
+
+
+    // Update is called once per frame
+
+
+    // Update is called once per frame
+    void FixedUpdate () {
 		float x = Input.GetAxis ("Horizontal");
 		float y = Input.GetAxis ("Vertical");
 		Quaternion PlayerRotation;
