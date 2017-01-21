@@ -96,6 +96,13 @@ public class ShowHealth : MonoBehaviour
         // Set the health bar's colour to proportion of the way between green and red based on the player's health.
         healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - HealthPercentage );
 
+		Color tmp = healthBar.material.color;
+		SpriteRenderer tmpSR = this.gameObject.GetComponent<SpriteRenderer> ();
+
+		tmp.a = tmpSR.color.a;
+		healthBar.material.color = tmp;
+
+
         // Set the scale of the health bar to be proportional to the player's health.
         healthBar.transform.localScale = new Vector3(healthScale.x * HealthPercentage, 1, 1);
     }
