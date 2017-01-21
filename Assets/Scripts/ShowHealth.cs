@@ -62,6 +62,11 @@ public class ShowHealth : MonoBehaviour
     {
         if(amount>0)
         health = health - amount;
+        VisibilityScript vis = GetComponent<VisibilityScript>();
+        if (vis != null)
+        {
+            vis.ChangeAlpha(0.4f);
+        }
     }
 
 

@@ -64,7 +64,7 @@ public class Rocket: MonoBehaviour
         if ( healthScript != null)
         {
 
-            healthScript.Injure(100);
+            healthScript.Injure(30);
         }
         Destroy(this.gameObject);
 
