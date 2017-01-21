@@ -25,7 +25,6 @@ public class ShowHealth : MonoBehaviour
         //tracking = objectTracking.GetComponent<PlayerController>();
         objectTracking = this.gameObject;
         healthBarObject = GameObject.Instantiate(Resources.Load("Health") as GameObject);
-        Debug.Log("object "+healthBarObject);
         healthBar = healthBarObject.GetComponent<SpriteRenderer>();
 
         // Getting the intial scale of the healthbar (whilst the player has full health).
