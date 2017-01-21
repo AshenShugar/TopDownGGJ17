@@ -8,6 +8,8 @@ public class Enemy1 : MonoBehaviour {
 
 	[SerializeField]
 	private bool EnemyAwake = false;
+	[SerializeField]
+	private float wakeUpRange = 7.0f;
 
 	public void wakeUp ()
 	{
@@ -29,6 +31,11 @@ public class Enemy1 : MonoBehaviour {
         float xo = target.transform.position.x;
         float yo = target.transform.position.y;
 		*/
+
+		if ((target.transform.position - transform.position).magnitude <= wakeUpRange) {
+			EnemyAwake = true;
+		}
+
         if (target != null && EnemyAwake)
         {
 				
