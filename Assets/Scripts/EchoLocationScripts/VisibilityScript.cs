@@ -9,6 +9,10 @@ public class VisibilityScript : MonoBehaviour {
 	public float DarkenTimer = 0.05f;
 	public float DarkenAmount = -0.05f;
 
+	public float MinimumAlpha = 0f;
+
+	private bool DarkEnough = false;
+
 
 	public void ChangeAlpha(float deltaAlpha)
 	{
@@ -17,8 +21,13 @@ public class VisibilityScript : MonoBehaviour {
 
 		tmpColor.a += deltaAlpha;
 
-		if (tmpColor.a < 0)
-			tmpColor.a = 0;
+		if (tmpColor.a <= MinimumAlpha) {
+			tmpColor.a = MinimumAlpha;
+			DarkEnough = true;
+		} else {
+			DarkEnough = false;
+		}
+
 
 		if (tmpColor.a > 1)
 			tmpColor.a = 1;
@@ -34,12 +43,13 @@ public class VisibilityScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		_timer += Time.deltaTime;
+		if (!DarkEnough) {
+			_timer += Time.deltaTime;
 
-		if (_timer >= DarkenTimer) {
-			ChangeAlpha (DarkenAmount);
-			_timer = 0;
+			if (_timer >= DarkenTimer) {
+				ChangeAlpha (DarkenAmount);
+				_timer = 0;
+			}
 		}
-
 	}
 }
