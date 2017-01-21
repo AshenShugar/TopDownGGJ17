@@ -19,6 +19,22 @@ public class LaunchEcho : MonoBehaviour {
 	[SerializeField]
 	private AudioSource SonarEffect;
 
+
+	public void LaunchMissile()
+	{
+		GameObject tmpObj;
+
+		tmpObj = Instantiate(rocket, this.gameObject.transform.position, transform.rotation);
+		Rocket r = tmpObj.GetComponent<Rocket>();
+		Vector3 eulerAngle = transform.eulerAngles;
+		double angle = 360 - transform.eulerAngles.z;
+		r.angle = angle;
+
+		r.creator = this.gameObject;
+
+
+	}
+
 	public void LaunchEchoLocation()
 	{
 		Quaternion angleOfLaunch;
@@ -56,13 +72,8 @@ public class LaunchEcho : MonoBehaviour {
 			LaunchVector = angleOfLaunch * LaunchVector;
 		}
 		SonarEffect.Play ();
-        tmpObj = Instantiate(rocket, this.gameObject.transform.position, transform.rotation);
-        Rocket r = tmpObj.GetComponent<Rocket>();
-        Vector3 eulerAngle = transform.eulerAngles;
-        double angle = 360 - transform.eulerAngles.z;
-        r.angle = angle;
 
-        r.creator = this.gameObject;
+
     }
 
 	// Use this for initialization
@@ -80,6 +91,11 @@ public class LaunchEcho : MonoBehaviour {
                 LaunchEchoLocation();
                 delayBeforeFire = maxDelayBeforeFire;
             }
+
+			if (Input.GetAxis ("Fire2") > 0) {
+				LaunchMissile ();
+				delayBeforeFire = maxDelayBeforeFire * 2;
+			}
 
         }
 
