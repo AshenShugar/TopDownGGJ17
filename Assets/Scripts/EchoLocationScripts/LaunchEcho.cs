@@ -29,7 +29,7 @@ public class LaunchEcho : MonoBehaviour {
 		Vector3 eulerAngle = transform.eulerAngles;
 		double angle = 360 - transform.eulerAngles.z;
 		r.angle = angle;
-
+        r.waveSize = Mathf.Max(60 - missileCharge, 0)*2.5f / 60 + 1;
 		r.creator = this.gameObject;
 
 
@@ -80,10 +80,11 @@ public class LaunchEcho : MonoBehaviour {
 	void Start () {
 		DegreeInRadians = Mathf.PI / 180;
 	}
-	
+    int missileCharge = 0;
 	// Update is called once per frame
 	void Update () {
         delayBeforeFire--;
+        delayBeforeFireMissile--;
         if (delayBeforeFire < 0)
         {
             if (Input.GetAxis("Fire1") > 0)
@@ -92,18 +93,32 @@ public class LaunchEcho : MonoBehaviour {
                 delayBeforeFire = maxDelayBeforeFire;
             }
 
-			if (Input.GetAxis ("Fire2") > 0) {
-				LaunchMissile ();
-				delayBeforeFire = maxDelayBeforeFire * 2;
-			}
+
+
+        }
+        if (delayBeforeFireMissile < 0)
+        {
+            if (Input.GetAxis("Fire2") > 0)
+            {
+                missileCharge++;
+
+            }
+            else if (missileCharge > 0)
+            {
+                LaunchMissile();
+                missileCharge = 0;
+                delayBeforeFireMissile = maxDelayBeforeFireMissile;
+            }
 
         }
 
-	}
+    }
 
     public int delayBeforeFire = UGameLogic.lengthOfSecond;
     public int maxDelayBeforeFire = UGameLogic.lengthOfSecond/3;
 
+    public int delayBeforeFireMissile = UGameLogic.lengthOfSecond;
+    public int maxDelayBeforeFireMissile = UGameLogic.lengthOfSecond*2 / 3;
 
 
 
