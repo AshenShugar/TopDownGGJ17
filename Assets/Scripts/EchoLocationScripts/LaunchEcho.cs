@@ -13,6 +13,9 @@ public class LaunchEcho : MonoBehaviour {
 
 	private float DegreeInRadians;
 
+	[SerializeField]
+	private AudioSource SonarEffect;
+
 	public void LaunchEchoLocation()
 	{
 		Quaternion angleOfLaunch;
@@ -49,6 +52,7 @@ public class LaunchEcho : MonoBehaviour {
 			tmpEP.MovementDirection = transform.rotation * LaunchVector;
 			LaunchVector = angleOfLaunch * LaunchVector;
 		}
+		SonarEffect.Play ();
 	}
 
 	// Use this for initialization
