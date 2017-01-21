@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class Rocket: MonoBehaviour
 {
-    double angle;
-    float speed = 5;
-    GameObject creator;
+    public double angle;
+    public float speed = 5;
+    public GameObject creator;
     public void Update()
     {
         double angleR = UGameLogic.TrueBearingsToRadians(angle);
@@ -39,7 +39,7 @@ public class Rocket: MonoBehaviour
         if ( healthScript != null)
         {
 
-            healthScript.Injure(1);
+            healthScript.Injure(100);
         }
         Destroy(this.gameObject);
 

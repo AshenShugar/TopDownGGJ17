@@ -53,7 +53,14 @@ public class LaunchEcho : MonoBehaviour {
 			LaunchVector = angleOfLaunch * LaunchVector;
 		}
 		SonarEffect.Play ();
-	}
+        tmpObj = Instantiate(rocket, this.gameObject.transform.position, transform.rotation);
+        Rocket r = tmpObj.GetComponent<Rocket>();
+        Vector3 eulerAngle = transform.eulerAngles;
+        double angle = 360 - transform.eulerAngles.z;
+        r.angle = angle;
+
+        r.creator = this.gameObject;
+    }
 
 	// Use this for initialization
 	void Start () {

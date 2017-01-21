@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour {
         GameObject other= col.gameObject;
         if (other.tag == "Enemy" && !damageDelays.ContainsKey(other))
         {
-            Debug.Log("health " + healthScript.health);
+            //Debug.Log("health " + healthScript.health);
             damageDelays[other] = UGameLogic.lengthOfSecond / 2;
             healthScript.health -= 5;
 
