@@ -6,26 +6,21 @@ using System;
 public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D _rb;
-    public float maxHealth = 100;
-    public float health; 
+
 	public float playerSpeed = 200.0f;
 	public float playerBreaking = 0.1f;
     public GameObject healthBar;
 	[SerializeField]
 	private bool SharpHandling = true;
-
+    private ShowHealth healthScript;
 	// Use this for initialization
 	void Start () {
 		_rb = GetComponent<Rigidbody2D> ();
-        health = maxHealth;
 
+        healthScript = GetComponent<ShowHealth>();
     }
 
-     void Awake()
-    {
-        healthBar.GetComponent<ShowHealth>().objectTracking = this.gameObject;
-        GameObject.Instantiate(healthBar);
-    }
+
 
     Dictionary<GameObject, int> damageDelays = new Dictionary<GameObject, int>();
     public int DamageDelay(GameObject o)
@@ -59,9 +54,10 @@ public class PlayerController : MonoBehaviour {
         GameObject other= col.gameObject;
         if (other.tag == "Enemy" && !damageDelays.ContainsKey(other))
         {
-            Debug.Log("health " + health);
+            Debug.Log("health " + healthScript.health);
             damageDelays[other] = UGameLogic.lengthOfSecond / 2;
-            health -= 5;
+            healthScript.health -= 5;
+
         }
     }
 
