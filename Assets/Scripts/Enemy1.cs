@@ -8,6 +8,7 @@ public class Enemy1 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		target = GameObject.Find("player");
+        Physics2D.IgnoreLayerCollision(11, 12);
 	}
     public float movementSpeed = 0.75f;
     // Update is called once per frame
