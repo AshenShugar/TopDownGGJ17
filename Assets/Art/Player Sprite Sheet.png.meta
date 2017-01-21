@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1d20f1ad1760f4c49b5daacac9dc3f22
-timeCreated: 1484953710
+timeCreated: 1484992582
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -98,7 +98,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -110,8 +110,8 @@ TextureImporter:
       name: Player Sprite Sheet_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 0
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -124,7 +124,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -136,8 +136,8 @@ TextureImporter:
       name: Player Sprite Sheet_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 0
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -150,7 +150,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -162,8 +162,8 @@ TextureImporter:
       name: Player Sprite Sheet_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -176,7 +176,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -188,7 +188,7 @@ TextureImporter:
       name: Player Sprite Sheet_7
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 0
         width: 32
         height: 32
