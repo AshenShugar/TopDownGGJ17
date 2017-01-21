@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
 			// LookRotation assumes the positive z direction is what you want to be facing what you're looking at
 			// That's not the case in 2d.  In 2d, z should always be up (or down or something), so set that to be what we look at,
 			// and then use the LookRotations "up", to be what is actualy the 2d players forward direction.
-			PlayerRotation = Quaternion.LookRotation (Vector3.back, vPlayerVelocity);
+			PlayerRotation = Quaternion.LookRotation (Vector3.forward, vPlayerVelocity);
 
 			transform.rotation = PlayerRotation;
 		}

@@ -11,7 +11,7 @@ public class VisibilityScript : MonoBehaviour {
 
 	public float MinimumAlpha = 0f;
 
-	private bool DarkEnough = false;
+	private bool DarkEnough = true;
 
 
 	public void ChangeAlpha(float deltaAlpha)
@@ -38,7 +38,14 @@ public class VisibilityScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+		// Initially, the level should be invisible, and it's only once you've echo-located stuff that it should appear
+		SpriteRenderer SR = this.gameObject.GetComponent<SpriteRenderer> ();
+		Color tmpColor = SR.color;
+
+		tmpColor.a = 0;
+
+		SR.color = tmpColor;
 	}
 	
 	// Update is called once per frame
