@@ -33,13 +33,7 @@ public class EchoParticle : MonoBehaviour {
 			Debug.Log ("Didn't find a Visibility Script on something we ran into");
 			Debug.Log (aCollision.gameObject.name);
 		}
-        Enemy1 enemy1 = aCollision.gameObject.GetComponent<Enemy1>();
-        ShowHealth healthScript= aCollision.gameObject.GetComponent<ShowHealth>();
-        if (enemy1 != null && healthScript!=null)
-        {
 
-            healthScript.Injure(1);
-        }
         Destroy (this.gameObject);
 
 	}
