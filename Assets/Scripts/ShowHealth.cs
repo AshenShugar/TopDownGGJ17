@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShowHealth : MonoBehaviour
 {
 
-
+    public int maxHealth = 100;
+    public int health = 100;
 
     public float repeatDamagePeriod = 2f;       // How frequently the player can be damaged.
     public GameObject healthBarObject;
@@ -14,14 +15,16 @@ public class ShowHealth : MonoBehaviour
     private Vector3 healthScale = new Vector3(1, 1, 1);               // The local scale of the health bar initially (with full health).
     public GameObject objectTracking;
     //private Animator anim;                      // Reference to the Animator on the player
-    PlayerController playerController;
+    //PlayerController tracking;
 
     void Awake()
     {
         // Setting up references.
 
-        playerController = objectTracking.GetComponent<PlayerController>();
-        healthBarObject = this.gameObject;
+        //tracking = objectTracking.GetComponent<PlayerController>();
+        objectTracking = this.gameObject;
+        healthBarObject = GameObject.Instantiate(Resources.Load("Health") as GameObject);
+        Debug.Log("object "+healthBarObject);
         healthBar = healthBarObject.GetComponent<SpriteRenderer>();
 
         // Getting the intial scale of the healthbar (whilst the player has full health).
@@ -33,23 +36,35 @@ public class ShowHealth : MonoBehaviour
 
     public void Update()
     {
+        if (health < 0)
+        {
+            GameObject.Destroy(objectTracking);
+            GameObject.Destroy(healthBarObject);
+            return;
+        }
         UpdateHealthBar();
-
+        
     }
 
-    
+    public void Injure(int amount)
+    {
+        if(amount>0)
+        health = health - amount;
+    }
+
+
     public float Health
     {
         get
         {
-            return playerController.health;
+            return health;
         }
     }
     public float MaxHealth
     {
         get
         {
-            return playerController.maxHealth;
+            return maxHealth;
         }
     }
 

@@ -33,7 +33,15 @@ public class EchoParticle : MonoBehaviour {
 			Debug.Log ("Didn't find a Visibility Script on something we ran into");
 			Debug.Log (aCollision.gameObject.name);
 		}
-		Destroy (this.gameObject);
+        Enemy1 enemy1 = aCollision.gameObject.GetComponent<Enemy1>();
+        ShowHealth healthScript= aCollision.gameObject.GetComponent<ShowHealth>();
+        if (enemy1 != null && healthScript!=null)
+        {
+
+            healthScript.Injure(1);
+        }
+        Destroy (this.gameObject);
+
 	}
 
 	// Use this for initialization
@@ -45,4 +53,6 @@ public class EchoParticle : MonoBehaviour {
 	void Update () {
 		transform.position = transform.position + (MovementDirection.normalized * ParticleSpeed * Time.deltaTime);
 	}
+
+
 }

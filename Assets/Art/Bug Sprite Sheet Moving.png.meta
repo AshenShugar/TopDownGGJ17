@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 834e0ecc25c12fa408ea66172d7268c4
-timeCreated: 1484980650
+guid: 869115d6a6a86401aaa5cd101bcc4a94
+timeCreated: 1484983759
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Boss Sprite Sheet_0
-    21300002: Boss Sprite Sheet_1
+    21300000: Bug Sprite Sheet Moving_0
+    21300002: Bug Sprite Sheet Moving_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -88,26 +88,26 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss Sprite Sheet_0
+      name: Bug Sprite Sheet Moving_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 64
-        height: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Boss Sprite Sheet_1
+      name: Bug Sprite Sheet Moving_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
