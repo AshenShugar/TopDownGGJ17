@@ -7,6 +7,9 @@ public class LaunchEcho : MonoBehaviour {
 	[SerializeField]
 	private GameObject EchoParticleObject;
 
+	[SerializeField]
+	private GameObject rocket;
+
 	public int NumberOfEchoParticles;
 
 	public int angleOffFoward = 30;

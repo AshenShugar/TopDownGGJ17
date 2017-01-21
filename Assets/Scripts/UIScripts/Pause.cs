@@ -55,6 +55,10 @@ public class Pause : MonoBehaviour {
 		optionPanel.SetActive(true);
 	}
 
+	public void QuitToMenu(float inSeconds)
+	{
+		Invoke ("QuitToMenu", inSeconds);
+	}
 
 	public void UnPause()
 	{

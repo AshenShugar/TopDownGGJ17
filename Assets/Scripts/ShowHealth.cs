@@ -17,6 +17,8 @@ public class ShowHealth : MonoBehaviour
     //private Animator anim;                      // Reference to the Animator on the player
     //PlayerController tracking;
     public GameObject deathAnimObj;
+	public GameObject deathSFXPlayer;
+	public int deathSFXIndex;
 
     void Awake()
     {
@@ -38,9 +40,17 @@ public class ShowHealth : MonoBehaviour
     {
         if (health < 0)
         {
+			GameObject tmp = Instantiate (deathSFXPlayer, this.transform.position, Quaternion.identity);
+			tmp.GetComponent<PlayDeathSoundHere> ().PlayAudioByIndex (deathSFXIndex);
+
+			if (objectTracking.tag == "Player") {
+				FindObjectOfType<Pause> ().QuitToMenu (3.0f);
+			}
+
             GameObject.Destroy(objectTracking);
             GameObject.Destroy(healthBarObject);
             GameObject dead = GameObject.Instantiate(deathAnimObj);
+			dead.transform.rotation = transform.rotation;
             dead.transform.position = transform.position;
             return;
         }
