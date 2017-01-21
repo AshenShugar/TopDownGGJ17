@@ -2,21 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D _rb;
-
+    public float maxHealth = 100;
+    public float health; 
 	public float playerSpeed = 200.0f;
 	public float playerBreaking = 0.1f;
-
+    public GameObject healthBar;
 	[SerializeField]
 	private bool SharpHandling = true;
 
 	// Use this for initialization
 	void Start () {
 		_rb = GetComponent<Rigidbody2D> ();
-	}
-	
+        health = maxHealth;
+
+    }
+
+     void Awake()
+    {
+        healthBar.GetComponent<ShowHealth>().objectTracking = this.gameObject;
+        GameObject.Instantiate(healthBar);
+
+
+    }
+
+    // Update is called once per frame
+    
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		float x = Input.GetAxis ("Horizontal");
