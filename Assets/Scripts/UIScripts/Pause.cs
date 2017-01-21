@@ -35,6 +35,14 @@ public class Pause : MonoBehaviour {
 			//Call the UnPause function to unpause the game
 			UnPause ();
 		}
+
+		if (SceneManager.GetActiveScene().name == MenuSceneName ) {
+			if(!MainMenuPanel.activeSelf)
+				MainMenuPanel.SetActive (true);
+		}
+		else
+			MainMenuPanel.SetActive (false);
+		
 	
 	}
 
