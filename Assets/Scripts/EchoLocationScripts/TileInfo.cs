@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class TileInfo : MonoBehaviour {
 
@@ -33,7 +32,7 @@ public class TileInfo : MonoBehaviour {
 
 	public GameObject GetNewTile(int index)
 	{
-		return (GameObject)PrefabUtility.InstantiatePrefab (GetPTL.PossibleTiles [index]);
+		return (GameObject)Instantiate (GetPTL.PossibleTiles [index]);
 	}
 
 }
