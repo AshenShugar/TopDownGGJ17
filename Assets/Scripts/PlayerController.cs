@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour {
 
 	public float playerSpeed = 200.0f;
 	public float playerBreaking = 0.1f;
-    public GameObject healthBar;
-	[SerializeField]
+    //public GameObject healthBar;
+
+    [SerializeField]
 	private bool SharpHandling = true;
     private ShowHealth healthScript;
 	// Use this for initialization
@@ -103,4 +104,5 @@ public class PlayerController : MonoBehaviour {
 		}
 
 	}
+
 }
