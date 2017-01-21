@@ -9,13 +9,14 @@ public class ShowHealth : MonoBehaviour
     public int health = 100;
 
     public float repeatDamagePeriod = 2f;       // How frequently the player can be damaged.
-    public GameObject healthBarObject;
+    private GameObject healthBarObject;
     private SpriteRenderer healthBar;           // Reference to the sprite renderer of the health bar.
     private float lastHitTime;                  // The time at which the player was last hit.
     private Vector3 healthScale = new Vector3(1, 1, 1);               // The local scale of the health bar initially (with full health).
-    public GameObject objectTracking;
+    private GameObject objectTracking;
     //private Animator anim;                      // Reference to the Animator on the player
     //PlayerController tracking;
+    public GameObject deathAnimObj;
 
     void Awake()
     {
@@ -40,6 +41,8 @@ public class ShowHealth : MonoBehaviour
         {
             GameObject.Destroy(objectTracking);
             GameObject.Destroy(healthBarObject);
+            GameObject dead = GameObject.Instantiate(deathAnimObj);
+            dead.transform.position = transform.position;
             return;
         }
         UpdateHealthBar();
@@ -87,6 +90,7 @@ public class ShowHealth : MonoBehaviour
         // Set the scale of the health bar to be proportional to the player's health.
         healthBar.transform.localScale = new Vector3(healthScale.x * HealthPercentage, 1, 1);
     }
+
 
 
 }
