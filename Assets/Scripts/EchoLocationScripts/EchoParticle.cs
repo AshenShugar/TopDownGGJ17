@@ -21,6 +21,7 @@ public class EchoParticle : MonoBehaviour {
 		}
 	}
 		
+	// Change the alpha to make whatever we collided with more visible.
 	void OnCollisionEnter2D(Collision2D aCollision)
 	{
 		VisibilityScript vScript = aCollision.gameObject.GetComponent<VisibilityScript> ();
@@ -28,6 +29,7 @@ public class EchoParticle : MonoBehaviour {
 		if (vScript != null)
 			vScript.ChangeAlpha (alphaChange);
 		else {
+			// Project Physics2D settings should ensure only things with VisibilityScript's can collide.
 			Debug.Log ("Didn't find a Visibility Script on something we ran into");
 			Debug.Log (aCollision.gameObject.name);
 		}
