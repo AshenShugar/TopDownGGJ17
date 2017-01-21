@@ -58,8 +58,22 @@ public class LaunchEcho : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis ("Fire1") > 0) {
-			LaunchEchoLocation ();
-		}
+        delayBeforeFire--;
+        if (delayBeforeFire < 0)
+        {
+            if (Input.GetAxis("Fire1") > 0)
+            {
+                LaunchEchoLocation();
+            }
+            delayBeforeFire = maxDelayBeforeFire;
+        }
+
 	}
+
+    public int delayBeforeFire = UGameLogic.lengthOfSecond;
+    public int maxDelayBeforeFire = UGameLogic.lengthOfSecond/3;
+
+
+
+
 }

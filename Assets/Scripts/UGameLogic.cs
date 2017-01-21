@@ -6,6 +6,7 @@ using System.Text;
 
 public class UGameLogic
 {
-   
+    public const int lengthOfSecond = 60;
+    public const int tileWidth = 32;
 }
 
