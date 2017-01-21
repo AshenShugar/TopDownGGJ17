@@ -11,6 +11,9 @@ public class MenuManager : MonoBehaviour {
 	[SerializeField]
 	private GameObject optionPanel;
 
+	[SerializeField]
+	private GameObject MainMenuUIParent;
+
 	public void ChangeNumberOfPlayers( int deltaNOP)
 	{
 		GM.NumberOfPlayers += deltaNOP;
@@ -45,6 +48,7 @@ public class MenuManager : MonoBehaviour {
 
 	public void StartGame(string SceneName)
 	{
+		MainMenuUIParent.SetActive (false);
 		SceneManager.LoadScene (SceneName);
 	}
 

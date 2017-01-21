@@ -7,7 +7,7 @@ public class SplashManager : MonoBehaviour {
 	private float _ftimer;
 
 	[SerializeField]
-	private GameObject MenuUICanvas;
+	private GameObject MenuUIParent;
 
 	[SerializeField]
 	private float _timeLimit;
@@ -24,8 +24,9 @@ public class SplashManager : MonoBehaviour {
 	void Update () {
 		_ftimer += Time.deltaTime;
 
-		if (_ftimer > _timeLimit)
-			SceneManager.LoadScene(_NextScene);
-		MenuUICanvas.SetActive (true);
+		if (_ftimer > _timeLimit) {
+			SceneManager.LoadScene (_NextScene);
+			MenuUIParent.SetActive (true);
+		}
 	}
 }
