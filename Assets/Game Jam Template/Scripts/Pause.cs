@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 
 	private bool isPaused;								//Boolean to check if the game is paused or not
 	[SerializeField]
 	private GameObject optionPanel;
+
+	[SerializeField]
+	private string MenuSceneName;
 
 	//Awake is called before Start()
 	void Awake()
@@ -31,6 +35,11 @@ public class Pause : MonoBehaviour {
 	
 	}
 
+	public void QuitToMenu()
+	{
+		UnPause ();
+		SceneManager.LoadScene (MenuSceneName);
+	}
 
 	public void DoPause()
 	{
