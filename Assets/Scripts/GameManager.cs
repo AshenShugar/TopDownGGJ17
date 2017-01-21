@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour {
 	public int CurrentPlayer = 0;
 	public int MaxNumberOfPlayers = 4;
 
-
 	public string CurrentPlayerText {
 		get {
 			return (CurrentPlayer + 1).ToString ();
@@ -26,7 +25,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad (this);
-	}
+			}
 	
 	// Update is called once per frame
 	void Update () {
