@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class ShowHealth : MonoBehaviour
 {
 
     public int maxHealth = 100;
-    public int health = 100;
+    public float health = 100;
 
     public float repeatDamagePeriod = 2f;       // How frequently the player can be damaged.
     private GameObject healthBarObject;
@@ -19,6 +20,7 @@ public class ShowHealth : MonoBehaviour
     public GameObject deathAnimObj;
 	public GameObject deathSFXPlayer;
 	public int deathSFXIndex;
+    public float healRatePerFrame = 0;
 
     void Awake()
     {
@@ -38,6 +40,7 @@ public class ShowHealth : MonoBehaviour
 
     public void Update()
     {
+        
         if (health < 0)
         {
 			GameObject tmp = Instantiate (deathSFXPlayer, this.transform.position, Quaternion.identity);
@@ -54,6 +57,7 @@ public class ShowHealth : MonoBehaviour
             dead.transform.position = transform.position;
             return;
         }
+        health = Math.Min(health + healRatePerFrame,maxHealth);
         UpdateHealthBar();
         
     }

@@ -29,7 +29,7 @@ public class LaunchEcho : MonoBehaviour {
 		Vector3 eulerAngle = transform.eulerAngles;
 		double angle = 360 - transform.eulerAngles.z;
 		r.angle = angle;
-        r.waveSize = Mathf.Max(60 - missileCharge, 0)*2.75f / 60+0.25f;
+        r.waveSize = Mathf.Max(60 - missileCharge, 0)*2.25f / 60+0.25f;
 		r.creator = this.gameObject;
         r.AdjustSpeed();
 
