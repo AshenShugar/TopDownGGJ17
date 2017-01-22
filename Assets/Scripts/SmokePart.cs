@@ -21,7 +21,7 @@ public class SmokePart : MonoBehaviour {
         transform.localScale = new Vector3(scale, scale, 1);
 
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        renderer.color = new Color(1, 0.5f+scale/2, scale, Mathf.Sqrt(scale)/2);
+        renderer.color = new Color(scale, 0.5f+scale/2, 1, Mathf.Sqrt(scale)/2);
         
 
 
