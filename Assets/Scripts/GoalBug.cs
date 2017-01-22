@@ -26,6 +26,7 @@ public class GoalBug : MonoBehaviour {
 
     public void OnDestroy()
     {
+        if(LevelController.instance!=null)
         LevelController.instance.CheckLevelEnd();
     }
 }
