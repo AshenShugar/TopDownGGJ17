@@ -13,6 +13,9 @@ public class Rocket: MonoBehaviour
     public GameObject creator;
     public Vector3 offset = new Vector3(0, 0, 0);
     int step = 0;
+    public GameObject particleToSpawn;
+    public int delayBeforeParticleSpawn = 0;
+    public int maxDelayBeforeParticleSpawn = UGameLogic.lengthOfSecond / 4;
 
     public void Awake()
     {
@@ -29,6 +32,8 @@ public class Rocket: MonoBehaviour
     public void Update()
     {
         step++;
+
+        
         double angleR = UGameLogic.TrueBearingsToRadians(angle);
         
         double angleR2 = UGameLogic.TrueBearingsToRadians(angle+90);
@@ -48,6 +53,15 @@ public class Rocket: MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, -newRot);
         offset = nextOffset;
         //Debug.Log(new Vector3(ofs2 * (float)Math.Cos(angleR2), ofs2 * (float)Math.Sin(angleR2), pos.z)+"prevOffset"+prevOffset+"offset"+offset);
+        //Spawn smoke
+        delayBeforeParticleSpawn--;
+
+        if (delayBeforeParticleSpawn < 0)
+        {
+            GameObject o=GameObject.Instantiate(particleToSpawn);
+            o.transform.position = transform.position;
+          
+        }
     }
 
     // Change the alpha to make whatever we collided with more visible.
