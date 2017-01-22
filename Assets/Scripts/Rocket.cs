@@ -23,7 +23,7 @@ public class Rocket: MonoBehaviour
     public void AdjustSpeed()
     {
         speed = speed / (1 + waveSize/2);
-        Debug.Log("speed " + speed);
+        //Debug.Log("speed " + speed);
     }
 
     public void Update()
