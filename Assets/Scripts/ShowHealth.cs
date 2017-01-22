@@ -17,6 +17,7 @@ public class ShowHealth : MonoBehaviour
     //private Animator anim;                      // Reference to the Animator on the player
     //PlayerController tracking;
     public GameObject deathAnimObj;
+	public GameObject bloodAnimObj;
 	public GameObject deathSFXPlayer;
 	public int deathSFXIndex;
 
@@ -61,12 +62,16 @@ public class ShowHealth : MonoBehaviour
     public void Injure(int amount)
     {
         if(amount>0)
-        health = health - amount;
+        	health = health - amount;
+		
         VisibilityScript vis = GetComponent<VisibilityScript>();
         if (vis != null)
         {
             vis.ChangeAlpha(0.4f);
         }
+		Debug.Log ("Here");
+		GameObject blood = GameObject.Instantiate(bloodAnimObj, transform.position, transform.rotation);
+
     }
 
 
