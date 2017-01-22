@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class destroyOnAnimationEnd : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public void KillMinusNine()
+
+	{
+		Destroy (this.gameObject);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
