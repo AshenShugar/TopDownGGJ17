@@ -28,8 +28,6 @@ public class Explosion : MonoBehaviour {
 
         if (healthScript != null)
         {
-            Debug.Log("Injure");
-
             healthScript.Injure(25);
             damagedObjects.Add(other);
 
