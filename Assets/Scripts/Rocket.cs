@@ -16,7 +16,7 @@ public class Rocket: MonoBehaviour
     public GameObject particleToSpawn;
     public int delayBeforeParticleSpawn = 0;
     public int maxDelayBeforeParticleSpawn = UGameLogic.lengthOfSecond / 4;
-
+    public GameObject explosion;
     public void Awake()
     {
         AdjustSpeed();
@@ -75,17 +75,17 @@ public class Rocket: MonoBehaviour
 
 
         if (healthScript != null)
-            healthScript.Injure(20);
+            healthScript.Injure(30);
         else
         {
 
         }
 
-        if ( healthScript != null)
-        {
 
-            healthScript.Injure(50);
-        }
+        GameObject ex=GameObject.Instantiate(explosion);
+        ex.transform.position = this.transform.position;
+        Explosion ex_s = ex.GetComponent<Explosion>();
+        ex_s.creator = this.creator;
         Destroy(this.gameObject);
 
     }
