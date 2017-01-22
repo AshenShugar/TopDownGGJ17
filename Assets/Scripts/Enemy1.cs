@@ -32,10 +32,11 @@ public class Enemy1 : MonoBehaviour {
         float yo = target.transform.position.y;
 		*/
 
-		if ((target.transform.position - transform.position).magnitude <= wakeUpRange) {
-			EnemyAwake = true;
+		if (target != null) {
+			if ((target.transform.position - transform.position).magnitude <= wakeUpRange) {
+				EnemyAwake = true;
+			}
 		}
-
         if (target != null && EnemyAwake)
         {
 				

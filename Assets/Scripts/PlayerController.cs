@@ -57,7 +57,8 @@ public class PlayerController : MonoBehaviour {
         {
             //Debug.Log("health " + healthScript.health);
             damageDelays[other] = UGameLogic.lengthOfSecond / 2;
-            healthScript.health -= 5;
+            //healthScript.health -= 5;
+			healthScript.Injure(5);
             VisibilityScript vis = other.GetComponent<VisibilityScript>();
             if (vis != null)
             {

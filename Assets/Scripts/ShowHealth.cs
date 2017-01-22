@@ -69,7 +69,6 @@ public class ShowHealth : MonoBehaviour
         {
             vis.ChangeAlpha(0.4f);
         }
-		Debug.Log ("Here");
 		GameObject blood = GameObject.Instantiate(bloodAnimObj, transform.position, transform.rotation);
 
     }
