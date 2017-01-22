@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class GoalBug : MonoBehaviour {
     public string NextLevelName;
 
-    [SerializeField]
-    private float DelayTillNextLevel = 3.0f;
+
 
     public void OnTriggerEnter2D(Collider2D WhatEntered)
     {
