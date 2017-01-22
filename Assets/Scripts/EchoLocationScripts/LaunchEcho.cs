@@ -29,11 +29,19 @@ public class LaunchEcho : MonoBehaviour {
 		Vector3 eulerAngle = transform.eulerAngles;
 		double angle = 360 - transform.eulerAngles.z;
 		r.angle = angle;
-        r.waveSize = Mathf.Max(60 - missileCharge, 0)*2.25f / 60+0.25f;
+        r.waveSize = NextWaveSize;
 		r.creator = this.gameObject;
         r.AdjustSpeed();
 
 	}
+
+    public float NextWaveSize
+    {
+        get
+        {
+            return Mathf.Max(60 - missileCharge, 0) * 2.25f / 60 + 0.25f;
+        }
+    }
 
 	public void LaunchEchoLocation()
 	{
@@ -85,6 +93,10 @@ public class LaunchEcho : MonoBehaviour {
 	void Update () {
         delayBeforeFire--;
         delayBeforeFireMissile--;
+
+
+
+
         if (delayBeforeFire < 0)
         {
             if (Input.GetAxis("Fire1") > 0)
@@ -111,7 +123,50 @@ public class LaunchEcho : MonoBehaviour {
             }
 
         }
+        Transform waveTabL_T = transform.Find("waveTab");
+        Transform waveTabR_T = transform.Find("waveTab2");
 
+        if (waveTabL_T != null && waveTabR_T != null)
+        {
+
+            Vector3 pos_t_l = waveTabL_T.localPosition;
+            Vector3 pos_t_r = waveTabR_T.localPosition;
+            float markerOffset = 2.5f;
+            float markerAlpha = 0.5f;
+            if (missileCharge > 0)
+            {
+                markerOffset = NextWaveSize;
+                //GameObject waveTabL = waveTabL_T.gameObject;
+                //GameObject waveTabR = waveTabR_T.gameObject;
+
+
+            }
+            if (delayBeforeFireMissile < 0)
+            {
+                markerAlpha = 0.25f;
+            }
+            else
+            {
+
+                markerAlpha = 0.05f;
+            }
+            SpriteRenderer SR_l = waveTabL_T.gameObject.GetComponent<SpriteRenderer>();
+            if (SR_l != null)
+            {
+                SR_l.color = new Color(1, 1, 1, markerAlpha);
+
+
+            }
+            SpriteRenderer SR_r = waveTabR_T.gameObject.GetComponent<SpriteRenderer>();
+            if (SR_r != null)
+            {
+                SR_r.color = new Color(1, 1, 1, markerAlpha);
+
+
+            }
+            waveTabL_T.localPosition = new Vector3(-markerOffset, pos_t_l.y, pos_t_l.z);
+            waveTabR_T.localPosition = new Vector3(markerOffset, pos_t_r.y, pos_t_r.y);
+        }
     }
 
     public int delayBeforeFire = UGameLogic.lengthOfSecond;
