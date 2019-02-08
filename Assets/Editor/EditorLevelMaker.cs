@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(TileInfo))] 
 public class EditorLevelMaker: Editor {
@@ -39,11 +40,8 @@ public class EditorLevelMaker: Editor {
 
 				if (Handles.Button (CurrentObj.transform.position + Vector3.left * 2, directionA, 1f, 1f, Handles.ConeCap)) {
 					NewTileLocation = CurrentObj.transform.position + Vector3.left * CurrentObj.transform.localScale.x;
-
 					tmp = CurrentObj.GetNewTile (CurrentObj.ThisTilesIndex);
 					tmp.GetComponent<TileInfo> ().ThisTilesIndex = CurrentObj.ThisTilesIndex;
-
-
 					tmp.transform.position = NewTileLocation;
 					Selection.activeObject = tmp;
 					tmp.name = (CurrentObj.LookAtNewTile(CurrentObj.ThisTilesIndex)).name;
@@ -55,7 +53,6 @@ public class EditorLevelMaker: Editor {
 					tmp = CurrentObj.GetNewTile (CurrentObj.ThisTilesIndex);
 					tmp.GetComponent<TileInfo> ().ThisTilesIndex = CurrentObj.ThisTilesIndex;
 
-
 					tmp.transform.position = NewTileLocation;
 					Selection.activeObject = tmp;
 					tmp.name = (CurrentObj.LookAtNewTile(CurrentObj.ThisTilesIndex)).name;
@@ -64,7 +61,6 @@ public class EditorLevelMaker: Editor {
 					NewTileLocation = CurrentObj.transform.position + Vector3.up * CurrentObj.transform.localScale.y;
 					tmp = CurrentObj.GetNewTile (CurrentObj.ThisTilesIndex);
 					tmp.GetComponent<TileInfo> ().ThisTilesIndex = CurrentObj.ThisTilesIndex;
-
 
 					tmp.transform.position = NewTileLocation;
 					Selection.activeObject = tmp;
@@ -75,7 +71,6 @@ public class EditorLevelMaker: Editor {
 
 					tmp = CurrentObj.GetNewTile (CurrentObj.ThisTilesIndex);
 					tmp.GetComponent<TileInfo> ().ThisTilesIndex = CurrentObj.ThisTilesIndex;
-
 
 					tmp.transform.position = NewTileLocation;
 					Selection.activeObject = tmp;
@@ -95,7 +90,7 @@ public class EditorLevelMaker: Editor {
 						LayingNewTile = false;
 						tmp = CurrentObj.GetNewTile (i);
 						tmp.GetComponent<TileInfo> ().ThisTilesIndex = i;
-
+                        EditorSceneManager.MarkSceneDirty( EditorSceneManager.GetActiveScene() );
 						tmp.transform.position = NewTileLocation;
 
 						Selection.activeObject = tmp;

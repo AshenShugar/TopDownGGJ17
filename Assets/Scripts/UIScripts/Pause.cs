@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Pause : MonoBehaviour {
 
@@ -17,7 +19,6 @@ public class Pause : MonoBehaviour {
 	void Awake()
 	{
 		DontDestroyOnLoad (this.gameObject);
-		//Get a component reference to ShowPanels attached to this object, store in showPanels variable
 	}
 
 	// Update is called once per frame
@@ -51,6 +52,23 @@ public class Pause : MonoBehaviour {
 		UnPause ();
 		SceneManager.LoadScene (MenuSceneName);
 		MainMenuPanel.SetActive (true);
+
+		// trying to force the initial button to be highlighted, but just doesn't want to work
+		/*
+		Button[] tmpArray = MainMenuPanel.GetComponentsInChildren<Button> ();
+		foreach (Button tmp in tmpArray) {
+			if (tmp.gameObject.name == "StartGame") {
+
+				EventSystem es = FindObjectOfType<EventSystem> ();
+
+				es.SetSelectedGameObject (tmp.gameObject);
+
+				tmp.Select ();
+				tmp.OnSelect (null);
+			}
+		}
+
+		*/
 	}
 
 	public void DoPause()
